@@ -1,7 +1,5 @@
 package 基础算法和其他.进制转换.temple.手写进制转换;
 
-import scala.Char;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -1,7 +1,5 @@
 package Java算竞实用技术.常用实用方法.进制转换.手写进制转换;
 
-import scala.Char;
-
 import java.util.HashMap;
 import java.util.Map;
 
