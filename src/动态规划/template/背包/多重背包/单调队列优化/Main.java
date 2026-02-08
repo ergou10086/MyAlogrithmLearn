@@ -15,7 +15,7 @@ public class Main {
         int n = scanner.nextInt();
         int W = scanner.nextInt();
         final int N = 40005;
-        int[] q = new int[N];
+        int[] q = new int[N];  // 队列
         int[] f = new int[N];    // f[k] = 窗口中的最大价值 + 还能放入物品的价值
         int[] g = new int[N];   // 备份f的数组
 

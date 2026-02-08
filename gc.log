@@ -1,0 +1,28 @@
+[2026-01-23T11:31:36.278+0800][0.006s][gc,init] CardTable entry size: 512
+[2026-01-23T11:31:36.278+0800][0.006s][gc,heap] Minimum heap 31457280  Initial heap 31457280  Maximum heap 31457280
+[2026-01-23T11:31:36.278+0800][0.006s][gc     ] Using Serial
+[2026-01-23T11:31:36.278+0800][0.006s][gc,heap,coops] Heap address: 0x00000000fe200000, size: 30 MB, Compressed Oops mode: 32-bit
+[2026-01-23T11:31:36.278+0800][0.006s][gc,init      ] Version: 21.0.4+8-LTS-274 (release)
+[2026-01-23T11:31:36.278+0800][0.006s][gc,init      ] CPUs: 20 total, 20 available
+[2026-01-23T11:31:36.278+0800][0.006s][gc,init      ] Memory: 32468M
+[2026-01-23T11:31:36.278+0800][0.006s][gc,init      ] Large Page Support: Disabled
+[2026-01-23T11:31:36.278+0800][0.006s][gc,init      ] NUMA Support: Disabled
+[2026-01-23T11:31:36.282+0800][0.009s][gc,init      ] Compressed Oops: Enabled (32-bit)
+[2026-01-23T11:31:36.282+0800][0.009s][gc,init      ] Heap Min Capacity: 30M
+[2026-01-23T11:31:36.282+0800][0.009s][gc,init      ] Heap Initial Capacity: 30M
+[2026-01-23T11:31:36.282+0800][0.009s][gc,init      ] Heap Max Capacity: 30M
+[2026-01-23T11:31:36.282+0800][0.009s][gc,init      ] Pre-touch: Disabled
+[2026-01-23T11:31:36.287+0800][0.015s][gc,metaspace ] CDS archive(s) mapped at: [0x0000026c00000000-0x0000026c00c90000-0x0000026c00c90000), size 13172736, SharedBaseAddress: 0x0000026c00000000, ArchiveRelocationMode: 1.
+[2026-01-23T11:31:36.287+0800][0.015s][gc,metaspace ] Compressed class space mapped at: 0x0000026c01000000-0x0000026c41000000, reserved size: 1073741824
+[2026-01-23T11:31:36.287+0800][0.015s][gc,metaspace ] Narrow klass base: 0x0000026c00000000, Narrow klass shift: 0, Narrow klass range: 0x100000000
+[2026-01-23T11:31:36.327+0800][0.054s][gc,heap,exit ] Heap
+[2026-01-23T11:31:36.327+0800][0.054s][gc,heap,exit ]  def new generation   total 23296K, used 3478K [0x00000000fe200000, 0x00000000ffad0000, 0x00000000ffad0000)
+[2026-01-23T11:31:36.327+0800][0.054s][gc,heap,exit ]   eden space 21184K,  16% used [0x00000000fe200000, 0x00000000fe565a20, 0x00000000ff6b0000)
+[2026-01-23T11:31:36.327+0800][0.054s][gc,heap,exit ]   from space 2112K,   0% used [0x00000000ff6b0000, 0x00000000ff6b0000, 0x00000000ff8c0000)
+[2026-01-23T11:31:36.327+0800][0.054s][gc,heap,exit ]   to   space 2112K,   0% used [0x00000000ff8c0000, 0x00000000ff8c0000, 0x00000000ffad0000)
+[2026-01-23T11:31:36.327+0800][0.054s][gc,heap,exit ]  tenured generation   total 5312K, used 0K [0x00000000ffad0000, 0x0000000100000000, 0x0000000100000000)
+[2026-01-23T11:31:36.327+0800][0.054s][gc,heap,exit ]    the space 5312K,   0% used [0x00000000ffad0000, 0x00000000ffad0000, 0x00000000ffad0200, 0x0000000100000000)
+[2026-01-23T11:31:36.327+0800][0.054s][gc,heap,exit ]  Metaspace       used 473K, committed 640K, reserved 1114112K
+[2026-01-23T11:31:36.327+0800][0.054s][gc,heap,exit ]   class space    used 39K, committed 128K, reserved 1048576K
+[2026-01-23T11:31:36.327+0800][0.054s][gc,heap,exit ] Accumulated young generation GC time 0.0000000 secs, 0 GC's, avg GC time 0.0000000
+[2026-01-23T11:31:36.327+0800][0.054s][gc,heap,exit ] Accumulated old generation GC time 0.0000000 secs, 0 GC's, avg GC time 0.0000000
