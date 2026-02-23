@@ -1,4 +1,4 @@
-package 搜索.DFS.Leetcode207_课程表;
+package 搜索.DFS.subject.Leetcode207_课程表;
 
 import java.util.*;
 /**

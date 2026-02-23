@@ -1,87 +1,31 @@
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-// 不可变状态类
-class State {
-    public final String name;
-    public final long timestamp;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+import java.util.concurrent.locks.Lock;
 
-    public State(String name) {
-        this.name = name;
-        this.timestamp = System.currentTimeMillis();
-    }
-
-    @Override
-    public String toString() {
-        return "State{name='" + name + "', ts=" + timestamp + "}";
-    }
-}
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
 public class Test {
+    public static void main(String[] args) {
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
-    // 使用 AtomicReference 持有当前状态
-    private static final AtomicReference<State> currentState =
-            new AtomicReference<>(new State("INIT"));
+        // 固定频率：初始延迟0秒，每隔3秒执行一次（T=3）
+        executor.scheduleAtFixedRate(() -> {
+            String threadName = Thread.currentThread().getName();
+            System.out.println(threadName + " 任务开始执行，时间：" + System.currentTimeMillis() / 1000);
 
-    // 安全地尝试从 expectedName 切换到 newName
-    public static boolean tryTransition(String expectedName, String newName) {
-        State current = currentState.get();
-        if (!current.name.equals(expectedName)) {
-            return false; // 当前状态不符合预期，不允许切换
-        }
-        State newState = new State(newName);
-        return currentState.compareAndSet(current, newState);
-    }
-
-    public static void main(String[] args) throws InterruptedException {
-        System.out.println("初始状态: " + currentState.get());
-
-        // 启动多个线程并发尝试状态切换
-        Thread t1 = new Thread(() -> {
-            if (tryTransition("INIT", "RUNNING")) {
-                System.out.println("成功从 INIT → RUNNING");
-            } else {
-                System.out.println("无法从 INIT → RUNNING（可能已被其他线程修改）");
+            // 模拟任务执行时间：先设为2秒（正常），再改为5秒（超时）
+            try {
+                TimeUnit.SECONDS.sleep(5); // 改为5秒看超时效果
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        });
 
-        Thread t2 = new Thread(() -> {
-            if (tryTransition("INIT", "RUNNING")) {
-                System.out.println("成功从 INIT → RUNNING");
-            } else {
-                System.out.println("无法从 INIT → RUNNING（可能已被其他线程修改）");
-            }
-        });
-
-        Thread t3 = new Thread(() -> {
-            // 尝试非法跳转：直接从 INIT 到 STOPPED（应失败）
-            if (tryTransition("INIT", "STOPPED")) {
-                System.out.println("成功从 INIT → STOPPED（这不应该发生！）");
-            } else {
-                System.out.println("止了非法跳转：INIT → STOPPED");
-            }
-        });
-
-        Thread t4 = new Thread(() -> {
-            // 等待一会儿，再尝试 RUNNING → STOPPED
-            try { Thread.sleep(100); } catch (InterruptedException ignored) {}
-            if (tryTransition("RUNNING", "STOPPED")) {
-                System.out.println("成功从 RUNNING → STOPPED");
-            } else {
-                System.out.println("无法从 RUNNING → STOPPED（可能还没到 RUNNING）");
-            }
-        });
-
-        t1.start();
-        t2.start();
-        t3.start();
-        t4.start();
-
-        // 等待所有线程完成
-        t1.join();
-        t2.join();
-        t3.join();
-        t4.join();
-
-        System.out.println("最终状态: " + currentState.get());
+            System.out.println(threadName + " 任务执行结束，时间：" + System.currentTimeMillis() / 1000);
+        }, 0, 3, TimeUnit.SECONDS);
     }
 }
